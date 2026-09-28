@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Roblox Promo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            overflow: hidden; /* Запрещаем скролл, интерфейс как в приложении */
+        }
+
+        /* Анимации для переходов между карточками */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .fade-out {
+            animation: fadeOut 0.3s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.95); }
+        }
+
+        /* Анимация вращения монетки/загрузки */
+        .spin-slow {
+            animation: spin 3s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Плавающие размытые элементы на фоне */
+        .floating-bg-item {
+            position: absolute;
+            filter: blur(8px);
+            opacity: 0.6;
+            animation: float 10s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(20deg); }
+        }
+
+        /* Специфичные настройки инпута */
+        input:focus {
+            outline: none;
+            border-color: #00b06f;
+            box-shadow: 0 0 0 2px rgba(0, 176, 111, 0.2);
+        }
+    </style>
+</head>
+<body class="flex justify-center h-screen bg-gray-100">
+
+    <!-- Главный контейнер (размер мобильного устройства без рамок) -->
+    <div class="w-full max-w-[400px] h-full bg-white relative overflow-hidden flex flex-col shadow-xl">
+        
+        <!-- Фоновые плавающие элементы (имитация размытых иконок из видео) -->
+        <div class="floating-bg-item text-gray-800 top-10 left-4" style="width: 80px; animation-delay: 0s;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 6v12l-12 6L0 18V6l12-6zm0 4.5L4.5 8.25v7.5L12 19.5l7.5-3.75v-7.5L12 4.5z"/></svg>
+        </div>
+        <div class="floating-bg-item text-gray-800 top-40 right-4" style="width: 100px; animation-delay: -2s; filter: blur(12px);">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 6v12l-12 6L0 18V6l12-6zm0 4.5L4.5 8.25v7.5L12 19.5l7.5-3.75v-7.5L12 4.5z"/></svg>
+        </div>
+        <div class="floating-bg-item text-gray-800 bottom-32 left-10" style="width: 120px; animation-delay: -4s; filter: blur(10px);">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 6v12l-12 6L0 18V6l12-6zm0 4.5L4.5 8.25v7.5L12 19.5l7.5-3.75v-7.5L12 4.5z"/></svg>
+        </div>
+        <div class="floating-bg-item text-gray-800 bottom-60 right-10" style="width: 70px; animation-delay: -1s;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 6v12l-12 6L0 18V6l12-6zm0 4.5L4.5 8.25v7.5L12 19.5l7.5-3.75v-7.5L12 4.5z"/></svg>
+        </div>
+
+        <!-- Верхняя панель (Header) -->
+        <header class="relative z-20 flex justify-between items-center p-5 pt-8">
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-gray-100">
+                <div class="w-6 h-6 rounded-md bg-gray-900 flex items-center justify-center shrink-0">
+                    <!-- Мини лого Roblox -->
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M4.88 0L0 19.12l19.12 4.88L24 4.88 4.88 0zM15 15l-6-1.5 1.5-6 6 1.5-1.5 6z"/></svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold flex items-center gap-1">GetRobux 
+                        <svg class="w-3 h-3 text-gray-800" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </span>
+                    <span class="text-[9px] text-gray-500 font-semibold uppercase tracking-wider">Partner Program</span>
+                </div>
+            </div>
+            <button class="bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full active:scale-95 transition-transform">
+                How it works
+            </button>
+        </header>
+
+        <!-- Центральная часть с карточками (Шаги) -->
+        <main class="relative z-20 flex-1 flex flex-col justify-center px-4 -mt-10">
+            
+            <!-- ШАГ 1: Ввод никнейма -->
+            <div id="step-1" class="bg-[#18181b] rounded-[24px] p-6 shadow-2xl w-full text-center fade-in">
+                <!-- Логотип Roblox (оригинальная форма) -->
+                <svg class="w-12 h-12 text-white mx-auto mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M4.88 0L0 19.12l19.12 4.88L24 4.88 4.88 0zM15 15l-6-1.5 1.5-6 6 1.5-1.5 6z"/></svg>
+                <h2 class="text-white font-black text-2xl mb-1 tracking-wide">ROBLOX</h2>
+                <p class="text-gray-400 text-sm font-semibold mb-6">Enter your Roblox username to start receiving free Robux</p>
+                
+                <input type="text" id="username-input" placeholder="Username" class="w-full bg-[#27272a] text-white font-semibold placeholder-gray-500 border-2 border-[#3f3f46] rounded-xl px-4 py-3.5 mb-4 focus:border-green-500 transition-colors">
+                
+                <button id="btn-continue" class="w-full bg-[#00b06f] hover:bg-[#009b62] text-white font-bold text-lg py-3.5 rounded-xl active:scale-95 transition-all shadow-[0_4px_14px_0_rgba(0,176,111,0.39)]">
+                    Continue
+                </button>
+            </div>
+
+            <!-- ШАГ 2: Загрузка (Поиск) -->
+            <div id="step-2" class="bg-[#18181b] rounded-[24px] p-8 shadow-2xl w-full text-center hidden">
+                <div class="relative w-16 h-16 mx-auto mb-6 flex justify-center items-center">
+                    <!-- Вращающаяся монетка Robux -->
+                    <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-16 h-16 spin-slow">
+                </div>
+                <h3 class="text-white font-bold text-lg">Searching for <span id="display-username-1" class="text-gray-300">...</span></h3>
+            </div>
+
+            <!-- ШАГ 3: Выбор суммы -->
+            <div id="step-3" class="bg-[#18181b] rounded-[24px] p-6 shadow-2xl w-full text-center hidden">
+                <h3 class="text-white font-black text-xl mb-1">Choose amount</h3>
+                <p class="text-gray-400 text-sm font-semibold mb-6">Select how many Robux you want</p>
+                
+                <div class="flex flex-col gap-3">
+                    <!-- Кнопка 500 -->
+                    <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="500">
+                        <span class="text-gray-400 font-bold">$0.00</span>
+                        <div class="flex items-center gap-2">
+                            <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-6 h-6">
+                            <span class="text-white font-black text-lg">500</span>
+                        </div>
+                    </button>
+                    <!-- Кнопка 750 -->
+                    <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="750">
+                        <span class="text-gray-400 font-bold">$0.00</span>
+                        <div class="flex items-center gap-2">
+                            <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-6 h-6">
+                            <span class="text-white font-black text-lg">750</span>
+                        </div>
+                    </button>
+                    <!-- Кнопка 1000 -->
+                    <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="1000">
+                        <span class="text-gray-400 font-bold">$0.00</span>
+                        <div class="flex items-center gap-2">
+                            <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-6 h-6">
+                            <span class="text-white font-black text-lg">1,000</span>
+                        </div>
+                    </button>
+                    <!-- Кнопка 1500 -->
+                    <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="1500">
+                        <span class="text-gray-400 font-bold">$0.00</span>
+                        <div class="flex items-center gap-2">
+                            <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-6 h-6">
+                            <span class="text-white font-black text-lg">1,500</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ШАГ 4: Загрузка (Отправка) -->
+            <div id="step-4" class="bg-[#18181b] rounded-[24px] p-8 shadow-2xl w-full text-center hidden">
+                <div class="relative w-16 h-16 mx-auto mb-6 flex justify-center items-center">
+                    <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-16 h-16 spin-slow">
+                </div>
+                <h3 class="text-white font-bold text-lg">Sending <span id="display-amount" class="text-yellow-500 font-black">0</span> Robux<br>to <span id="display-username-2" class="text-gray-300">...</span></h3>
+            </div>
+
+            <!-- ШАГ 5: Финал -->
+            <div id="step-5" class="bg-[#18181b] rounded-[24px] p-6 shadow-2xl w-full text-center hidden">
+                <svg class="w-12 h-12 text-white mx-auto mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M4.88 0L0 19.12l19.12 4.88L24 4.88 4.88 0zM15 15l-6-1.5 1.5-6 6 1.5-1.5 6z"/></svg>
+                <h2 class="text-white font-black text-2xl mb-1 tracking-wide">ROBLOX</h2>
+                <h3 class="text-white font-bold text-lg mb-2">Almost there!</h3>
+                <p class="text-gray-400 text-sm font-semibold mb-6">Your reward is ready. Click the button below and follow the instructions to receive your <span class="text-white">Robux</span></p>
+                
+                <button id="btn-claim" class="w-full bg-[#00b06f] hover:bg-[#009b62] text-white font-bold text-lg py-3.5 rounded-xl active:scale-95 transition-all shadow-[0_4px_14px_0_rgba(0,176,111,0.39)] relative overflow-hidden group">
+                    <span class="relative z-10">Claim Robux</span>
+                    <!-- Эффект блика на кнопке -->
+                    <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                </button>
+            </div>
+
+        </main>
+
+        <!-- Нижнее меню (Bottom Nav) -->
+        <nav class="relative z-20 mx-4 mb-6 mt-auto bg-[#18181b] rounded-full py-4 px-6 flex justify-between items-center text-gray-400 shadow-xl">
+            <!-- Home -->
+            <button class="hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </button>
+            <!-- Play -->
+            <button class="hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
+            <!-- Avatar (Центральная кнопка) -->
+            <button class="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-400 hover:border-white transition-colors">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjXjau74vA5S8ZsakvDajX520_MHqXjAFjoyULX7ummg&s=10" alt="Avatar" class="w-full h-full object-cover">
+            </button>
+            <!-- Chat -->
+            <button class="hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+            </button>
+            <!-- More -->
+            <button class="hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        // Состояние приложения
+        let state = {
+            username: '',
+            amount: 0
+        };
+
+        // DOM элементы
+        const steps = [
+            document.getElementById('step-1'),
+            document.getElementById('step-2'),
+            document.getElementById('step-3'),
+            document.getElementById('step-4'),
+            document.getElementById('step-5')
+        ];
+        
+        const usernameInput = document.getElementById('username-input');
+        const btnContinue = document.getElementById('btn-continue');
+        const displayUsername1 = document.getElementById('display-username-1');
+        const displayUsername2 = document.getElementById('display-username-2');
+        const displayAmount = document.getElementById('display-amount');
+        const amountBtns = document.querySelectorAll('.amount-btn');
+        const btnClaim = document.getElementById('btn-claim');
+
+        // Функция переключения экранов с анимацией
+        function showStep(stepIndex) {
+            // Скрываем все
+            steps.forEach(step => {
+                if (!step.classList.contains('hidden')) {
+                    step.classList.remove('fade-in');
+                    step.classList.add('hidden');
+                }
+            });
+            // Показываем нужный
+            const targetStep = steps[stepIndex];
+            targetStep.classList.remove('hidden');
+            targetStep.classList.add('fade-in');
+        }
+
+        // ШАГ 1: Нажатие "Продолжить"
+        btnContinue.addEventListener('click', () => {
+            const val = usernameInput.value.trim();
+            if (val.length < 3) {
+                // Трясем инпут при ошибке (простая анимация)
+                usernameInput.style.transform = 'translateX(-10px)';
+                setTimeout(() => usernameInput.style.transform = 'translateX(10px)', 100);
+                setTimeout(() => usernameInput.style.transform = 'translateX(0)', 200);
+                return;
+            }
+            
+            state.username = val;
+            displayUsername1.textContent = state.username;
+            displayUsername2.textContent = state.username;
+            
+            showStep(1); // Переходим на экран "Поиск..."
+            
+            // Через 2.5 секунды показываем выбор суммы
+            setTimeout(() => {
+                showStep(2);
+            }, 2500);
+        });
+
+        // Слушаем Enter в инпуте
+        usernameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') btnContinue.click();
+        });
+
+        // ШАГ 3: Выбор суммы
+        amountBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const amount = e.currentTarget.getAttribute('data-amount');
+                state.amount = amount;
+                
+                // Форматируем сумму с запятой для красивого отображения (1,000)
+                displayAmount.textContent = Number(amount).toLocaleString('en-US');
+                
+                showStep(3); // Переходим на экран "Отправка..."
+                
+                // Через 3 секунды переходим на финальный экран
+                setTimeout(() => {
+                    showStep(4);
+                }, 3000);
+            });
+        });
+
+        // ШАГ 5: Кнопка Claim
+        btnClaim.addEventListener('click', () => {
+            // Здесь обычно находится перенаправление на рекламную ссылку (CPA locker)
+            btnClaim.innerHTML = '<span class="relative z-10">Loading...</span>';
+            setTimeout(() => {
+                btnClaim.innerHTML = '<span class="relative z-10">Verified!</span>';
+                
+                // Запуск фейерверка / конфетти (настроено для мобильного вида)
+                var duration = 3000;
+                var animationEnd = Date.now() + duration;
+                var defaults = { startVelocity: 25, spread: 360, ticks: 60, zIndex: 100 };
+
+                var interval = setInterval(function() {
+                    var timeLeft = animationEnd - Date.now();
+
+                    if (timeLeft <= 0) {
+                        return clearInterval(interval);
+                    }
+
+                    var particleCount = 50 * (timeLeft / duration);
+                    confetti(Object.assign({}, defaults, { 
+                        particleCount,
+                        origin: { x: 0.5, y: 0.6 } // Запуск строго из центра экрана
+                    }));
+                }, 250);
+            }, 1000);
+        });
+
+        // Настройка Tailwind keyframes для кнопки Claim
+        tailwind.config = {
+            theme: {
+                extend: {
+                    keyframes: {
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
