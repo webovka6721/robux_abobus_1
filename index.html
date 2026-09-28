@@ -64,13 +64,10 @@
         }
     </style>
 </head>
-<!-- ЖЕСТКАЯ ФИКСАЦИЯ ВЫСОТЫ: h-[100dvh] -->
 <body class="flex justify-center h-[100dvh] bg-gray-100">
 
-    <!-- Главный контейнер (размер мобильного устройства без рамок) -->
     <div class="w-full max-w-[400px] h-full bg-white relative overflow-hidden flex flex-col shadow-xl">
         
-        <!-- Фоновые плавающие элементы (имитация размытых иконок из видео) -->
         <div class="floating-bg-item text-gray-800 top-10 left-4" style="width: 80px; animation-delay: 0s;">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 6v12l-12 6L0 18V6l12-6zm0 4.5L4.5 8.25v7.5L12 19.5l7.5-3.75v-7.5L12 4.5z"/></svg>
         </div>
@@ -84,11 +81,9 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 6v12l-12 6L0 18V6l12-6zm0 4.5L4.5 8.25v7.5L12 19.5l7.5-3.75v-7.5L12 4.5z"/></svg>
         </div>
 
-        <!-- Верхняя панель (Header) -->
         <header class="relative z-20 flex justify-between items-center p-5 pt-8">
             <div class="flex items-center gap-2 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-gray-100">
                 <div class="w-6 h-6 rounded-md bg-gray-900 flex items-center justify-center shrink-0">
-                    <!-- Мини лого Roblox -->
                     <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M4.88 0L0 19.12l19.12 4.88L24 4.88 4.88 0zM15 15l-6-1.5 1.5-6 6 1.5-1.5 6z"/></svg>
                 </div>
                 <div class="flex flex-col">
@@ -103,12 +98,9 @@
             </button>
         </header>
 
-        <!-- Центральная часть с карточками (Шаги). Добавлен pb-20 чтобы не налезало на абсолютное меню -->
-        <main class="relative z-20 flex-1 flex flex-col justify-center px-4 -mt-10 pb-20">
+        <main class="relative z-20 flex-1 flex flex-col justify-center px-4 -mt-10 pb-32">
             
-            <!-- ШАГ 1: Ввод никнейма -->
             <div id="step-1" class="bg-[#18181b] rounded-[24px] p-6 shadow-2xl w-full text-center fade-in">
-                <!-- Логотип Roblox (оригинальная форма) -->
                 <svg class="w-12 h-12 text-white mx-auto mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M4.88 0L0 19.12l19.12 4.88L24 4.88 4.88 0zM15 15l-6-1.5 1.5-6 6 1.5-1.5 6z"/></svg>
                 <h2 class="text-white font-black text-2xl mb-1 tracking-wide">ROBLOX</h2>
                 <p class="text-gray-400 text-sm font-semibold mb-6">Enter your Roblox username to start receiving free Robux</p>
@@ -120,22 +112,18 @@
                 </button>
             </div>
 
-            <!-- ШАГ 2: Загрузка (Поиск) -->
             <div id="step-2" class="bg-[#18181b] rounded-[24px] p-8 shadow-2xl w-full text-center hidden">
                 <div class="relative w-16 h-16 mx-auto mb-6 flex justify-center items-center">
-                    <!-- Вращающаяся монетка Robux -->
                     <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-16 h-16 spin-slow">
                 </div>
                 <h3 class="text-white font-bold text-lg">Searching for <span id="display-username-1" class="text-gray-300">...</span></h3>
             </div>
 
-            <!-- ШАГ 3: Выбор суммы -->
             <div id="step-3" class="bg-[#18181b] rounded-[24px] p-6 shadow-2xl w-full text-center hidden">
                 <h3 class="text-white font-black text-xl mb-1">Choose amount</h3>
                 <p class="text-gray-400 text-sm font-semibold mb-6">Select how many Robux you want</p>
                 
                 <div class="flex flex-col gap-3">
-                    <!-- Кнопка 500 -->
                     <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="500">
                         <span class="text-gray-400 font-bold">$0.00</span>
                         <div class="flex items-center gap-2">
@@ -143,7 +131,6 @@
                             <span class="text-white font-black text-lg">500</span>
                         </div>
                     </button>
-                    <!-- Кнопка 750 -->
                     <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="750">
                         <span class="text-gray-400 font-bold">$0.00</span>
                         <div class="flex items-center gap-2">
@@ -151,7 +138,6 @@
                             <span class="text-white font-black text-lg">750</span>
                         </div>
                     </button>
-                    <!-- Кнопка 1000 -->
                     <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="1000">
                         <span class="text-gray-400 font-bold">$0.00</span>
                         <div class="flex items-center gap-2">
@@ -159,7 +145,6 @@
                             <span class="text-white font-black text-lg">1,000</span>
                         </div>
                     </button>
-                    <!-- Кнопка 1500 -->
                     <button class="amount-btn flex justify-between items-center bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] rounded-xl px-4 py-3.5 transition-colors active:scale-[0.98]" data-amount="1500">
                         <span class="text-gray-400 font-bold">$0.00</span>
                         <div class="flex items-center gap-2">
@@ -170,7 +155,6 @@
                 </div>
             </div>
 
-            <!-- ШАГ 4: Загрузка (Отправка) -->
             <div id="step-4" class="bg-[#18181b] rounded-[24px] p-8 shadow-2xl w-full text-center hidden">
                 <div class="relative w-16 h-16 mx-auto mb-6 flex justify-center items-center">
                     <img src="https://i.ibb.co/hRPB2pjM/Robux-2019.webp" alt="Robux" class="w-16 h-16 spin-slow">
@@ -178,7 +162,6 @@
                 <h3 class="text-white font-bold text-lg">Sending <span id="display-amount" class="text-yellow-500 font-black">0</span> Robux<br>to <span id="display-username-2" class="text-gray-300">...</span></h3>
             </div>
 
-            <!-- ШАГ 5: Финал -->
             <div id="step-5" class="bg-[#18181b] rounded-[24px] p-6 shadow-2xl w-full text-center hidden">
                 <svg class="w-12 h-12 text-white mx-auto mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M4.88 0L0 19.12l19.12 4.88L24 4.88 4.88 0zM15 15l-6-1.5 1.5-6 6 1.5-1.5 6z"/></svg>
                 <h2 class="text-white font-black text-2xl mb-1 tracking-wide">ROBLOX</h2>
@@ -187,32 +170,25 @@
                 
                 <button id="btn-claim" class="w-full bg-[#00b06f] hover:bg-[#009b62] text-white font-bold text-lg py-3.5 rounded-xl active:scale-95 transition-all shadow-[0_4px_14px_0_rgba(0,176,111,0.39)] relative overflow-hidden group">
                     <span class="relative z-10">Claim Robux</span>
-                    <!-- Эффект блика на кнопке -->
                     <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
                 </button>
             </div>
 
         </main>
 
-        <!-- Нижнее меню (Bottom Nav) - АБСОЛЮТНОЕ ПОЗИЦИОНИРОВАНИЕ -->
-        <nav class="absolute bottom-6 left-4 right-4 z-30 bg-[#18181b] rounded-full py-4 px-6 flex justify-between items-center text-gray-400 shadow-xl">
-            <!-- Home -->
+        <nav class="absolute bottom-16 left-4 right-4 z-30 bg-[#18181b] rounded-full py-4 px-6 flex justify-between items-center text-gray-400 shadow-xl">
             <button class="hover:text-white transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             </button>
-            <!-- Play -->
             <button class="hover:text-white transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </button>
-            <!-- Avatar (Центральная кнопка) -->
             <button class="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-400 hover:border-white transition-colors">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjXjau74vA5S8ZsakvDajX520_MHqXjAFjoyULX7ummg&s=10" alt="Avatar" class="w-full h-full object-cover">
             </button>
-            <!-- Chat -->
             <button class="hover:text-white transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
             </button>
-            <!-- More -->
             <button class="hover:text-white transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
             </button>
@@ -243,26 +219,21 @@
         const amountBtns = document.querySelectorAll('.amount-btn');
         const btnClaim = document.getElementById('btn-claim');
 
-        // Функция переключения экранов с анимацией
         function showStep(stepIndex) {
-            // Скрываем все
             steps.forEach(step => {
                 if (!step.classList.contains('hidden')) {
                     step.classList.remove('fade-in');
                     step.classList.add('hidden');
                 }
             });
-            // Показываем нужный
             const targetStep = steps[stepIndex];
             targetStep.classList.remove('hidden');
             targetStep.classList.add('fade-in');
         }
 
-        // ШАГ 1: Нажатие "Продолжить"
         btnContinue.addEventListener('click', () => {
             const val = usernameInput.value.trim();
             if (val.length < 3) {
-                // Трясем инпут при ошибке (простая анимация)
                 usernameInput.style.transform = 'translateX(-10px)';
                 setTimeout(() => usernameInput.style.transform = 'translateX(10px)', 100);
                 setTimeout(() => usernameInput.style.transform = 'translateX(0)', 200);
@@ -273,45 +244,37 @@
             displayUsername1.textContent = state.username;
             displayUsername2.textContent = state.username;
             
-            showStep(1); // Переходим на экран "Поиск..."
+            showStep(1); 
             
-            // Через 2.5 секунды показываем выбор суммы
             setTimeout(() => {
                 showStep(2);
             }, 2500);
         });
 
-        // Слушаем Enter в инпуте
         usernameInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') btnContinue.click();
         });
 
-        // ШАГ 3: Выбор суммы
         amountBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const amount = e.currentTarget.getAttribute('data-amount');
                 state.amount = amount;
                 
-                // Форматируем сумму с запятой для красивого отображения (1,000)
                 displayAmount.textContent = Number(amount).toLocaleString('en-US');
                 
-                showStep(3); // Переходим на экран "Отправка..."
+                showStep(3);
                 
-                // Через 3 секунды переходим на финальный экран
                 setTimeout(() => {
                     showStep(4);
                 }, 3000);
             });
         });
 
-        // ШАГ 5: Кнопка Claim
         btnClaim.addEventListener('click', () => {
-            // Здесь обычно находится перенаправление на рекламную ссылку (CPA locker)
             btnClaim.innerHTML = '<span class="relative z-10">Loading...</span>';
             setTimeout(() => {
                 btnClaim.innerHTML = '<span class="relative z-10">Verified!</span>';
                 
-                // Запуск фейерверка / конфетти (настроено для мобильного вида)
                 var duration = 3000;
                 var animationEnd = Date.now() + duration;
                 var defaults = { startVelocity: 25, spread: 360, ticks: 60, zIndex: 100 };
@@ -326,13 +289,12 @@
                     var particleCount = 50 * (timeLeft / duration);
                     confetti(Object.assign({}, defaults, { 
                         particleCount,
-                        origin: { x: 0.5, y: 0.6 } // Запуск строго из центра экрана
+                        origin: { x: 0.5, y: 0.6 }
                     }));
                 }, 250);
             }, 1000);
         });
 
-        // Настройка Tailwind keyframes для кнопки Claim
         tailwind.config = {
             theme: {
                 extend: {
